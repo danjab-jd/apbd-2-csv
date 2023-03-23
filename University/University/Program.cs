@@ -17,7 +17,9 @@ public class Program
         string logsPath = @$"{ProjectDir}\Logs\logs.txt";
 
         FileInfo fileInfo = new(path);
-        HashSet<Student> studentSet = new();
+
+        StudentComparer studentComparer = new();
+        HashSet<Student> studentSet = new(studentComparer);
 
         await using StreamWriter streamWriter = new(logsPath);
         using StreamReader streamReader = new(fileInfo.OpenRead());
